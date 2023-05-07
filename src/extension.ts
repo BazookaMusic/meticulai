@@ -2,11 +2,29 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { AIRefactorizer } from './ai-suggestion-provider';
+import { getApiKey, setApiKey } from './settingsUtil';
+import { complain } from './errors';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+export async function activate(context: vscode.ExtensionContext) {
+	const apiKey = getApiKey();
+	if (apiKey === "" || apiKey === undefined)
+	{
+		const newApiKey = await vscode.window.showInputBox({
+			placeHolder: "",
+			prompt: "Set your OpenAI Api Key",
+			value: ""
+		  });
+		
+		  if (newApiKey === "" || newApiKey === undefined)
+		  {
+			complain("No API Key set");
+			return;
+		  }
 
+		  setApiKey(newApiKey);
+	}
 	
 	const meticulaiDiagnostics = vscode.languages.createDiagnosticCollection("meticulai");
 	context.subscriptions.push(meticulaiDiagnostics);

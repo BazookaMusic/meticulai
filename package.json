@@ -1,13 +1,13 @@
 {
   "name": "meticulai",
   "displayName": "Meticulai",
-  "description": "A watchful eye on your code that provides insights based on code context.",
-  "version": "0.0.1",
+  "description": "An extension to provide AI insights about your code.",
+  "version": "0.5.0",
   "engines": {
     "vscode": "^1.78.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages"
   ],
   "activationEvents": [
     "onStartupFinished"
@@ -17,7 +17,7 @@
     "configuration": {
       "title": "Meticulai",
       "properties": {
-        "meticulai.openAIApiKey": {
+        "meticulai.openAiApiKey": {
           "type": "string",
           "default": "",
           "description": "Your OpenAI API key."
