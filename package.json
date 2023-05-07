@@ -1,0 +1,68 @@
+{
+  "name": "meticulai",
+  "displayName": "Meticulai",
+  "description": "A watchful eye on your code that provides insights based on code context.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Meticulai",
+      "properties": {
+        "meticulai.openAIApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your OpenAI API key."
+        },
+        "meticulai.model": {
+          "type": "string",
+          "default": "gpt-3.5-turbo",
+          "description": "The model to use for the feedback. See available models here: https://platform.openai.com/docs/models/gpt-4"
+        },
+        "meticulai.defaultFeedbackHint": {
+          "type": "string",
+          "default": "",
+          "description": "A hint to be given to the LLM to produce a more relevant message."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.78.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@vscode/test-electron": "^2.3.0",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.4",
+    "webpack": "^5.81.0",
+    "webpack-cli": "^5.0.2"
+  },
+  "dependencies": {
+    "openai": "^3.2.1"
+  }
+}
