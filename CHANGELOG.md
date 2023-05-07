@@ -1,9 +1,4 @@
 # Change Log
 
-All notable changes to the "meticulai" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-
-- Initial release
+### 0.5.0
+- Includes the 'AI Suggestion' action, which provides an AI generated diagnostic based on the highlighted code.
